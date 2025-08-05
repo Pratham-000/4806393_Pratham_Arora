@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+/*
+ * Complete the 'pangrams' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts STRING s as parameter.
+ */
+
+std::string pangrams(const std::string& s) {
+    std::unordered_set<char> letters;
+
+    for (char ch : s) {
+        if (std::isalpha(ch)) {
+            letters.insert(std::tolower(ch));
+        }
+    }
+
+    return letters.size() == 26 ? "pangram" : "not pangram";
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string s;
+    getline(cin, s);
+
+    string result = pangrams(s);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
